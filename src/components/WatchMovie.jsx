@@ -48,7 +48,7 @@ function WatchMovie() {
             if (res.data) setVideoNameList(res.data)
         },
         onError: () => {
-            toast.error("Some Error Occured.")
+            toast.error("Server starting... Give It A Few Minutes")
         }
     })
 
