@@ -1,0 +1,7 @@
+const HOST = '/api'
+export const ADD_SUBTITLE = HOST + '/add'
+export const GET_ALL_SUBTITLES = HOST + '/all'
+export const GET_SUBTITLE_BY_NAME = HOST + '/'
+export const GET_ALL_VIDEOS = HOST + '/allvid'
+export const ADD_VIDEO = HOST + '/upload'
+export const GET_VIDEO_BY_NAME = HOST + '/video'
