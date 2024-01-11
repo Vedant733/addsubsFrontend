@@ -85,6 +85,7 @@ function WatchMovie() {
     }
 
     return <div style={{ display: 'grid', placeItems: 'center', height: '100vh', width: '100%', background: 'white' }}>
+        <span style={{ position: 'absolute', top: 10, left: 50, fontSize: '2rem', fontWeight: 800 }}>SubVid</span>
         {!videoURL ? <div style={{ border: '1px solid ' + primary, padding: '24px', borderRadius: '4px', backgroundColor: secondaryLight, display: 'flex', flexDirection: 'column', gap: '12px', minWidth: '200px' }}>
             <FormControl fullWidth size="small">
                 <InputLabel id="demo-simple-select-label">Select Video</InputLabel>

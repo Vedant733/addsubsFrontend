@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { backgroundColor, boxBorderColor, secondary, secondaryLight } from '../extra/colors'
 import InfoModal from './InfoModal'
+import { Box } from '@mui/material'
 
 export const VideoPlayer = ({ url, videoFile, clearAll }) => {
 
@@ -79,8 +80,8 @@ export const VideoPlayer = ({ url, videoFile, clearAll }) => {
                 videoFile={videoFile}
                 clearAll={clearAll}
             />
-            <div style={{ display: 'flex' }}>
-                <div className="c1" style={{ height: '65vh', width: '65%', position: 'relative', border: '1px solid ' + boxBorderColor, padding: '12px' }}>
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', flexDirection: { xs: 'column', md: 'row' } }}>
+                <div className="c1" style={{ flex: 1, height: '65vh', minWidth: '60%', position: 'relative', border: '1px solid ' + boxBorderColor, padding: '12px' }}>
                     <ReactPlayer
                         url={url}
                         controls={true}
@@ -95,7 +96,7 @@ export const VideoPlayer = ({ url, videoFile, clearAll }) => {
                     {currentSubtitle && <div style={{ background: '#00000061', position: 'absolute', left: '50%', transform: 'translateX(-50%)', bottom: '20%', padding: '12px', color: 'white', wordBreak: 'break-all' }}>{currentSubtitle.description}</div>}
                     {showSubtitleBox && <div style={{ background: '#00000061', position: 'absolute', left: '50%', transform: 'translateX(-50%)', bottom: '20%', padding: '12px', color: 'white', wordBreak: 'break-all' }}>{showSubtitleBox}</div>}
                 </div>
-                <div className="c2" style={{ background: backgroundColor, width: '35%', padding: '12px', height: '65vh', border: '1px solid ' + boxBorderColor }}>
+                <div className="c2" style={{ background: backgroundColor, flex: 1, minWidth: '35%', padding: '12px', height: '65vh', border: '1px solid ' + boxBorderColor }}>
                     {!addSubtitleBoxOpen ? <>
                         <button style={{ padding: '12px 16px', fontWeight: 600, marginBottom: '8px', background: secondary, borderRadius: '4px', border: 'none', color: 'white' }} onClick={handleAddSubtitleButton}>Add Subtitle</button>
                         <button style={{ padding: '12px 16px', fontWeight: 600, marginBottom: '8px', background: secondary, borderRadius: '4px', border: 'none', color: 'white', marginLeft: '4px' }} onClick={() => setOpenSaveModal(true)}>Save</button>
@@ -120,8 +121,9 @@ export const VideoPlayer = ({ url, videoFile, clearAll }) => {
                         </div>)}
                     </div>
                 </div>
-            </div>
-            <div className="c3" style={{ width: '94%', display: 'flex', background: backgroundColor, height: '25vh', justifyContent: 'center', marginTop: '1rem', padding: '0 3%', }}>
+            </Box>
+            <div className="c3" style={{ position: 'relative', width: '94%', display: 'flex', background: backgroundColor, height: '25vh', justifyContent: 'center', marginTop: '1rem', padding: '.6% 3%', flexDirection: 'column' }}>
+                <span style={{ height: 'fit-content', color: 'white', fontSize: '1.4rem', fontWeight: 800 }}>Timeline</span>
                 {endTime && <VideoTimeline
                     pointerRef={pointerRef}
                     subtitleList={subtitleList} currentTime={currentTime} endTime={endTime} playerRef={playerRef} currentSubtitle={currentSubtitle} />}

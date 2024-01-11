@@ -9,9 +9,9 @@ function Onboarding({ videoUrl, setVideoUrl, videoFile, setVideoFile, setOnBoard
     const navigate = useNavigate()
 
     return <div style={{ width: '100%', background: 'white', display: 'grid', placeItems: 'center', height: '100vh' }}>
+        <span style={{ position: 'absolute', top: 10, left: 50, fontSize: '2rem', fontWeight: 800 }}>SubVid</span>
         <div style={{ border: '1px solid ' + primary, padding: '24px', borderRadius: '4px', backgroundColor: secondaryLight, display: 'flex', flexDirection: 'column', gap: '12px' }}>
-            <span style={{ width: '100%', textAlign: 'center', fontWeight: 700 }}>Add Subtitles To A Video</span>
-            <label htmlFor="files" style={{ borderRadius: '4px', background: primary, padding: '12px 16px', color: 'white', fontWeight: 600, textAlign: 'center', maxWidth: '200px', textOverflow: 'ellipsis', maxLines: 1, overflow: 'hidden', whiteSpace: 'nowrap' }}>{videoFile ? videoFile.name : 'Choose A Video'}</label>
+            <label htmlFor="files" style={{ borderRadius: '4px', background: primary, padding: '12px 16px', color: 'white', fontWeight: 600, textAlign: 'center', maxWidth: '200px', textOverflow: 'ellipsis', maxLines: 1, overflow: 'hidden', whiteSpace: 'nowrap', fontSize: '1.05rem' }}>{videoFile ? videoFile.name : 'Add Subtitles To A Video'}</label>
             <input id="files" hidden style={{}} value={null} type='file' onChange={(e) => {
                 const selectedFile = e.target.files[0]
                 if (!selectedFile) return toast.error('Select A File')
