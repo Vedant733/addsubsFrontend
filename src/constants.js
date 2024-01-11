@@ -1,4 +1,4 @@
-const HOST = '/api'
+const HOST = 'https://imaginative-salmiakki-3c4991.netlify.app/api'
 export const ADD_SUBTITLE = HOST + '/add'
 export const GET_ALL_SUBTITLES = HOST + '/all'
 export const GET_SUBTITLE_BY_NAME = HOST + '/'
