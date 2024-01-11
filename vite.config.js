@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:5000",
+        target: "https://imaginative-salmiakki-3c4991.netlify.app/",
         secure: false,
       },
     },
