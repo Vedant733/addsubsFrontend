@@ -37,7 +37,7 @@ function AddSubtitle({ currentSubtitle, setCurrentSubtitle, setAddSubtitleBoxOpe
                         setCurrentSubtitle(prev => ({ ...prev, end: subEnd }))
                     } catch (err) {
                         setSubEnd(currentSubtitle.end)
-                        toast.error('really bruh?')
+                        toast.error('Enter Valid Endtime.')
                     }
                 }} style={{ borderRadius: '4px', textAlign: 'center', border: 'none', padding: '4px', width: '50px', fontWeight: 700 }} placeholder="MM:SS" />
                 <br />

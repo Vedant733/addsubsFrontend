@@ -2,6 +2,8 @@
 
 **Add subtitles to a video, stream a video.**
 
+Run `npm install` command to install all the dependencies,then run `npm run dev` command.
+
 ## React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
