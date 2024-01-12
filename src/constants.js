@@ -1,5 +1,6 @@
 const HOST = 'https://vidsubsbackend.onrender.com/api'
 export const ADD_SUBTITLE = HOST + '/add'
+export const WELCOME_API = HOST + '/welcome'
 export const GET_ALL_SUBTITLES = HOST + '/all'
 export const GET_SUBTITLE_BY_NAME = HOST + '/'
 export const GET_ALL_VIDEOS = HOST + '/allvid'

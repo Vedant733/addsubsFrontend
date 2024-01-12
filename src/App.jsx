@@ -1,10 +1,12 @@
 import React from 'react';
 import VideoPlayer from './components/VideoPlayer';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import Onboarding from './components/Onboarding';
-import { QueryClient, QueryClientProvider } from 'react-query'
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import WatchMovie from './components/WatchMovie';
+import { WELCOME_API } from './constants';
+import axios from 'axios';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -19,6 +21,12 @@ const queryClient = new QueryClient({
 });
 
 function App() {
+
+  useQuery('WELCOME_API', () => axios.get(WELCOME_API), {
+    onError: () => {
+      toast.warning('Server Starting...Wait A Few Minutes')
+    }
+  })
 
   // const playerRef = React.useRef(null);
   const [videoUrl, setVideoUrl] = React.useState(null)
