@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { backgroundColor, boxBorderColor, secondary, secondaryLight } from '../extra/colors'
 import InfoModal from './InfoModal'
 import { Box } from '@mui/material'
+import { MdDelete } from "react-icons/md";
 
 export const VideoPlayer = ({ url, videoFile, clearAll }) => {
 
@@ -65,7 +66,13 @@ export const VideoPlayer = ({ url, videoFile, clearAll }) => {
             description: '',
             id: Math.random()
         })
-        setAddSubtitleBoxOpen(true)
+        document.startViewTransition(() => setAddSubtitleBoxOpen(true))
+    }
+
+    const handleDelete = (id) => {
+        document.startViewTransition(() => {
+            setSubtitleList(prev => prev.filter(item => item.id !== id))
+        })
     }
 
     return (
@@ -113,9 +120,11 @@ export const VideoPlayer = ({ url, videoFile, clearAll }) => {
                         />}
                     <div style={{ overflowY: 'auto', height: addSubtitleBoxOpen ? '42vh' : '55vh' }}>
                         {subtitleList.map((item) => <div key={item.id} style={{ padding: '8px', border: '1px solid ' + secondary, marginBottom: '8px', borderRadius: '4px', background: secondaryLight, width: '95%' }}>
-                            <input disabled value={item.start} style={{ border: 'none', background: 'white', textAlign: 'center', width: '50px', marginRight: '4px' }} placeholder="MM:SS" />
-                            <input disabled value={item.end} style={{ border: 'none', background: 'white', textAlign: 'center', width: '50px' }} placeholder="MM:SS" />
-                            <br />
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                <input disabled value={item.start} style={{ border: 'none', background: 'white', textAlign: 'center', width: '50px', marginRight: '4px', borderRadius: '4px' }} placeholder="MM:SS" />
+                                <input disabled value={item.end} style={{ border: 'none', background: 'white', textAlign: 'center', width: '50px', borderRadius: '4px' }} placeholder="MM:SS" />
+                                <MdDelete style={{ marginLeft: '1rem', color: 'red', fontSize: '1.3rem' }} onClick={() => handleDelete(item.id)} />
+                            </div>
                             <textarea disabled value={item.description}
                                 style={{ width: '100%', height: '60px', resize: 'none', marginTop: '8px', borderRadius: '4px' }} />
                         </div>)}

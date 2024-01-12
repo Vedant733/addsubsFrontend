@@ -42,7 +42,7 @@ function WatchMovie() {
     }, []);
 
     React.useEffect(() => {
-        if (isFullscreen && subtitleList.length) toast.error('Subtitle seems to be having some problem during fullscreen.')
+        if (isFullscreen && subtitleList.length) toast.error('Subtitle seems to be having some problem during fullscreen mode.')
     }, [isFullscreen, subtitleList.length])
 
     useQuery('GET_VIDEO_NAMES', () => axios.get(GET_ALL_VIDEOS), {

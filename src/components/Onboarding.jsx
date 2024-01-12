@@ -23,7 +23,7 @@ function Onboarding({ videoUrl, setVideoUrl, videoFile, setVideoFile, setOnBoard
                 type='file'
                 onChange={(e) => {
                     const selectedFile = e.target.files[0]
-                    if (!selectedFile) return toast.error('Select A File')
+                    if (!selectedFile && !videoFile) return toast.error('Select A File')
                     if (!selectedFile.type.startsWith('video/')) return toast.error('Select A Video')
                     if (selectedFile.size >= 50 * 1024 * 1024) return toast.error('File Size Limit is 50MB.')
                     setVideoFile(selectedFile)

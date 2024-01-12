@@ -19,7 +19,6 @@ export const VideoTimeline = ({ subtitleList, currentTime, endTime, playerRef, c
     const onClick = (e) => {
         const box = e.currentTarget;
         const left = e.pageX + box.scrollLeft - box.getBoundingClientRect().left - 12; // 12 is the padding
-        console.log(left)
         playerRef.current.seekTo(left / pixelsPerSecond, 'seconds');
         pointerRef.current.focus();
     };

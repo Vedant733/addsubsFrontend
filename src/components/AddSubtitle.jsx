@@ -7,8 +7,10 @@ import { primary } from "../extra/colors";
 function AddSubtitle({ currentSubtitle, setCurrentSubtitle, setAddSubtitleBoxOpen, setSubtitleList, endTime }) {
 
     const close = () => {
-        setAddSubtitleBoxOpen(false)
-        setCurrentSubtitle(null)
+        document.startViewTransition(() => {
+            setAddSubtitleBoxOpen(false)
+            setCurrentSubtitle(null)
+        })
     }
     const [subEnd, setSubEnd] = React.useState(currentSubtitle.end)
 
