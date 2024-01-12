@@ -12,9 +12,14 @@ import axios from 'axios';
 function App() {
 
   useQuery('WELCOME_API', () => axios.get(WELCOME_API), {
+    onSuccess: () => {
+      toast.success('Welcome')
+    },
     onError: () => {
       toast.warning('Server Starting...Wait A Few Minutes')
-    }
+    },
+    retryDelay: 10000,
+    retry: 1
   })
 
   // const playerRef = React.useRef(null);
