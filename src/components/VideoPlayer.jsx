@@ -23,6 +23,12 @@ export const VideoPlayer = ({ url, videoFile, clearAll }) => {
     const [openSaveModal, setOpenSaveModal] = React.useState(false)
     const [subtitleList, setSubtitleList] = React.useState([])
 
+    React.useEffect(() => {
+        const exists = subtitleList.filter((item) => getTimeStringToNumber(item.start) <= currentTime && getTimeStringToNumber(item.end) >= currentTime)
+        if (exists.length) setShowSubtitleBox(exists[0].description)
+        else setShowSubtitleBox(null)
+    }, [currentTime, subtitleList])
+
     const onReady = (e) => {
         setEndTime(e.getDuration())
     }

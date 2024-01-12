@@ -15,7 +15,7 @@ function AddSubtitle({ currentSubtitle, setCurrentSubtitle, setAddSubtitleBoxOpe
     const [subEnd, setSubEnd] = React.useState(currentSubtitle.end)
 
     const addSubtitle = () => {
-        if (!currentSubtitle.description.trim().length) return toast.error("Description?")
+        if (!currentSubtitle.description.trim().length) return toast.error("Enter Subtitles.")
         setSubtitleList(prev => {
             const ret = [...prev, currentSubtitle]
             ret.sort((a, b) => getTimeStringToNumber(a.start) - getTimeStringToNumber(b.start)
