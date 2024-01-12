@@ -7,6 +7,7 @@ import { GET_ALL_SUBTITLES, GET_ALL_VIDEOS, GET_SUBTITLE_BY_NAME, GET_VIDEO_BY_N
 import { toast } from "react-toastify";
 import { getTimeStringToNumber } from "../extra/functions";
 import ReactPlayer from "react-player";
+import CircularProgress from '@mui/material/CircularProgress';
 
 function WatchMovie() {
 
@@ -18,6 +19,7 @@ function WatchMovie() {
     const [videoURL, setVideoURL] = React.useState(null)
     const [isFullscreen, setIsFullscreen] = React.useState(false);
     const [currentSubtitle, setCurrentSubtitle] = React.useState(null)
+    const [isLoading, setIsLoading] = React.useState(false)
     const playerRef = React.useRef(null)
 
     const handleProgress = (e) => {
@@ -76,11 +78,14 @@ function WatchMovie() {
     const handleClick = async () => {
         if (!videoName) return toast.error('Select A Video')
         try {
+            setIsLoading(true)
             const response = await axios.post(GET_VIDEO_BY_NAME, { title: videoName }, { responseType: 'blob' })
             const blob = new Blob([response.data], { type: 'video/mp4' })
             setVideoURL(URL.createObjectURL(blob));
         } catch (err) {
             toast.error('Some Error Occured.')
+        } finally {
+            setIsLoading(false)
         }
     }
 
@@ -114,9 +119,11 @@ function WatchMovie() {
                 </Select>
             </FormControl>
             <button
-                onClick={handleClick}
+                onClick={() => {
+                    if (!isLoading) handleClick()
+                }}
                 style={{ padding: '12px 16px', fontWeight: 600, marginTop: '8px', background: primary, borderRadius: '4px', border: 'none', color: 'white', }} >
-                Start Watching
+                {isLoading ? <CircularProgress sx={{ color: 'white', fontSize: '1rem' }} /> : `Start Watching`}
             </button>
             <sub style={{ fontSize: '.5rem' }}>Make Sure You Select Appropriate Subtitles</sub>
         </div>

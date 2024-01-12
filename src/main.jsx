@@ -10,7 +10,6 @@ const queryClient = new QueryClient({
       refetchIntervalInBackground: false,
       refetchInterval: false,
       refetchOnReconnect: false,
-      refetchOnMount: false,
       refetchOnWindowFocus: false
     }
   }

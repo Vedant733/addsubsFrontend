@@ -10,10 +10,12 @@ import axios from 'axios';
 
 
 function App() {
-
   useQuery('WELCOME_API', () => axios.get(WELCOME_API), {
     onSuccess: () => {
+      const welcome = sessionStorage.getItem('welcome')
+      if (welcome) return;
       toast.success('Welcome')
+      sessionStorage.setItem('welcome', 'welcome')
     },
     onError: () => {
       toast.warning('Server Starting...Wait A Few Minutes')
